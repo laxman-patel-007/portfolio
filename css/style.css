@@ -654,8 +654,8 @@ img, svg {
 }
 
 .badge-bottom-left {
-  bottom: 85px;
-  left: -20px;
+  bottom: 24px;
+  left: -16px;
   animation-delay: 2s;
 }
 
