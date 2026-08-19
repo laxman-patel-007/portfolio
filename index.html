@@ -122,24 +122,6 @@
               <img src="assets/images/me.jpeg" alt="Laxman Patel - Full Stack Developer" class="hero-profile-img">
               <div class="hero-image-overlay"></div>
             </div>
-
-            <!-- Floating Badge 1 -->
-            <div class="floating-badge badge-top-right">
-              <span class="badge-icon">💻</span>
-              <div class="badge-text">
-                <span class="badge-title">Full Stack</span>
-                <span class="badge-sub">Developer</span>
-              </div>
-            </div>
-
-            <!-- Floating Badge 2 -->
-            <div class="floating-badge badge-bottom-left">
-              <span class="status-dot"></span>
-              <div class="badge-text">
-                <span class="badge-title">Open for Work</span>
-                <span class="badge-sub">Available Now</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -506,7 +488,12 @@
 
           <!-- Interactive Contact Form -->
           <div class="contact-form-card">
-            <form id="contact-form" class="contact-form" novalidate>
+            <form id="contact-form" class="contact-form" action="https://formsubmit.co/laxmankauva@gmail.com" method="POST" novalidate>
+              <!-- FormSubmit Configuration -->
+              <input type="hidden" name="_subject" value="New message from portfolio!">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              
               <div class="form-group">
                 <label for="name" class="form-label">Your Name <span class="required">*</span></label>
                 <input type="text" id="name" name="name" class="form-input" placeholder="e.g. John Doe" required autocomplete="name">

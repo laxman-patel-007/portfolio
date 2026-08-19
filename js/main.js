@@ -192,11 +192,12 @@ function initContactForm() {
 
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
+  const subjectInput = document.getElementById('subject');
   const messageInput = document.getElementById('message');
   const submitBtn = document.getElementById('submit-btn');
 
   // Input listener to clear errors on typing
-  [nameInput, emailInput, messageInput].forEach(input => {
+  [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
     if (!input) return;
     input.addEventListener('input', () => {
       const formGroup = input.closest('.form-group');
@@ -204,7 +205,7 @@ function initContactForm() {
     });
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     let isValid = true;
@@ -230,21 +231,38 @@ function initContactForm() {
 
     if (!isValid) return;
 
-    // Simulate sending with loading state
+    // Button loading state
     const originalBtnContent = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span>Sending...</span>`;
 
-    setTimeout(() => {
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/laxmankauva@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        form.reset();
+        showToast('Message sent! It will arrive in your Gmail inbox 🚀', 'success', 5000);
+      } else {
+        throw new Error('Server response not ok');
+      }
+    } catch (err) {
+      // Fallback: trigger direct mailto if fetch encounters network error
+      const subject = encodeURIComponent(subjectInput?.value?.trim() || 'Portfolio Contact Inquiry');
+      const body = encodeURIComponent(`Name: ${nameInput.value.trim()}\nEmail: ${emailInput.value.trim()}\n\nMessage:\n${messageInput.value.trim()}`);
+      window.location.href = `mailto:laxmankauva@gmail.com?subject=${subject}&body=${body}`;
+      showToast('Opening your email client to send message...', 'success', 5000);
+    } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnContent;
-      
-      // Reset form
-      form.reset();
-      
-      // Success feedback
-      showToast('Thank you! Your message has been sent successfully. 🚀', 'success', 5000);
-    }, 1000);
+    }
   });
 }
 
