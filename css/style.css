@@ -879,7 +879,26 @@ img, svg {
 }
 
 .skill-icon {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Ensure monochrome logos adapt to light/dark themes */
+[data-theme="light"] .devicon-express-original,
+[data-theme="light"] .devicon-github-original,
+[data-theme="light"] .devicon-vercel-original,
+[data-theme="light"] .devicon-nextjs-plain {
+  color: #0f172a;
+}
+
+[data-theme="dark"] .devicon-express-original,
+[data-theme="dark"] .devicon-github-original,
+[data-theme="dark"] .devicon-vercel-original,
+[data-theme="dark"] .devicon-nextjs-plain {
+  color: #f8fafc;
 }
 
 /* ==========================================================================
