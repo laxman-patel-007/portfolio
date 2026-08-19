@@ -95,6 +95,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1594,26 +1595,49 @@ img, svg {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive Breakpoints & Mobile Enhancements
    ========================================================================== */
 @media (max-width: 992px) {
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-socials {
+    justify-content: center;
   }
 
   .hero-card-wrapper {
-    max-width: 540px;
+    max-width: 380px;
     margin: 0 auto;
     width: 100%;
   }
 
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .skills-categories-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  /* Sticky Header on Mobile */
   .nav-menu {
     position: fixed;
     top: 4.5rem;
@@ -1621,9 +1645,10 @@ img, svg {
     width: 100%;
     background-color: var(--bg-card);
     border-bottom: 1px solid var(--border-color);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
     padding: 1.5rem 0;
     display: none;
+    z-index: 99;
   }
 
   .nav-menu.active {
@@ -1644,7 +1669,25 @@ img, svg {
 
   .nav-list {
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 1.05rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: var(--accent-light);
+  }
+
+  .nav-link::after {
+    display: none;
   }
 
   .hamburger-btn {
@@ -1655,12 +1698,48 @@ img, svg {
     display: none;
   }
 
+  /* Hero Section Mobile */
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-image-container {
+    height: 380px;
+  }
+
+  .hero-card-wrapper {
+    max-width: 320px;
+  }
+
   .hero-cta-group {
     flex-direction: column;
+    width: 100%;
   }
 
   .hero-cta-group .btn {
     width: 100%;
+  }
+
+  /* Projects Grid Mobile */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-preview {
+    height: 160px;
+  }
+
+  /* Contact Form Mobile */
+  .contact-info-card,
+  .contact-form-card {
+    padding: 1.5rem;
+  }
+
+  /* iOS Input Focus Zoom Prevention (16px standard) */
+  .form-input,
+  .form-textarea {
+    font-size: 16px !important;
   }
 
   .footer-container {
@@ -1675,5 +1754,44 @@ img, svg {
 
   .footer-links {
     justify-content: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.95rem;
+  }
+
+  .hero-image-container {
+    height: 320px;
+  }
+
+  .hero-card-wrapper {
+    max-width: 280px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .about-paragraph {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .filter-btn {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .toast {
+    width: 100%;
   }
 }
