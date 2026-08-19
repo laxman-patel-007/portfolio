@@ -91,8 +91,8 @@ git commit -m "Initial commit: Modern developer portfolio"
 # Rename branch to main
 git branch -M main
 
-# Add your GitHub repository as remote (replace YOUR-USERNAME with your actual GitHub username)
-git remote add origin https://github.com/YOUR-USERNAME/portfolio.git
+# Add your GitHub repository as remote
+git remote add origin https://github.com/laxman-patel-007/portfolio.git
 
 # Push the code
 git push -u origin main
